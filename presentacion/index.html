@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presentación Académica · Gemelo Digital Subestación Minera</title>
+  <meta name="description" content="Presentación formal del gemelo digital 3D de una subestación eléctrica minera con arquitectura Big Data e IoT." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css" />
+  <link rel="stylesheet" href="css/deck.css" />
+</head>
+<body>
+  <div class="deck-bg" aria-hidden="true"></div>
+  <div class="nav-hint">← → navegar · F pantalla completa · ESC overview</div>
+
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1. Portada -->
+      <section data-transition="zoom" data-background-transition="fade">
+        <div class="eyebrow">PROYECTO ACADÉMICO · INGENIERÍA / SISTEMAS INDUSTRIALES</div>
+        <h1>Gemelo Digital de una<br />Subestación Eléctrica Minera</h1>
+        <p class="kicker">Simulación 3D interactiva, telemetría IoT y arquitectura Big Data en tiempo real</p>
+        <div class="meta-row">
+          <div>ACTIVO FOCAL <b>TRANS-01 · 138 / 13.8 kV</b></div>
+          <div>STACK <b>Three.js · Kafka · MongoDB · Chart.js</b></div>
+          <div>DEMO <b>crisberjar.github.io/simulador</b></div>
+        </div>
+        <div class="footer-note">Presentación académica · lenguaje SCADA · 2026</div>
+      </section>
+
+      <!-- 2. Planteamiento -->
+      <section data-transition="slide-in fade-out" data-auto-animate>
+        <h2 data-id="t-problem">1. Planteamiento del problema</h2>
+        <div class="two-col">
+          <div>
+            <p class="quote">¿Cómo observar, comprender y anticipar el comportamiento térmico de una subestación remota sin exponer operadores al patio energizado?</p>
+            <ul class="objectives">
+              <li>La operación minera exige continuidad de suministro eléctrico.</li>
+              <li>Las sobrecargas elevan la temperatura del transformador y el riesgo de falla.</li>
+              <li>Los datos IoT llegan a gran velocidad: requieren streaming y almacenamiento histórico.</li>
+            </ul>
+          </div>
+          <div class="card" data-id="problem-card">
+            <strong>HIPÓTESIS DE TRABAJO</strong>
+            <p>Un gemelo digital 3D, alimentado por telemetría simulada y una tubería Kafka → MongoDB, permite visualizar el estado operativo y detectar umbrales críticos (&gt; 70 MW) de forma inmediata y comprensible.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Objetivos -->
+      <section data-transition="convex" data-auto-animate>
+        <h2 data-id="t-problem">2. Objetivos</h2>
+        <div class="grid-2">
+          <div class="card" data-id="problem-card">
+            <strong>OBJETIVO GENERAL</strong>
+            <p>Diseñar e implementar un gemelo digital web de alta fidelidad visual para una subestación minera, integrado a un flujo de Big Data y a una interfaz móvil de monitoreo.</p>
+          </div>
+          <div class="card">
+            <strong>OBJETIVOS ESPECÍFICOS</strong>
+            <p>1) Modelar el patio AT en Three.js.<br />2) Simular carga, temperatura y voltaje.<br />3) Animar el pipeline de telemetría.<br />4) Activar alarmas ante sobrecarga.<br />5) Exponer lectura en app móvil con gráficos.</p>
+          </div>
+        </div>
+        <div class="grid-3" style="margin-top:0.7em">
+          <div class="card"><strong>FIDELIDAD 3D</strong><p>PBR · sombras · OrbitControls</p></div>
+          <div class="card"><strong>DATOS EN VIVO</strong><p>MQTT / Kafka · lag · NoSQL</p></div>
+          <div class="card"><strong>UX OPERATIVA</strong><p>SCADA + app celular</p></div>
+        </div>
+      </section>
+
+      <!-- 4. Solución -->
+      <section data-transition="fade" data-auto-animate>
+        <h2>3. Solución propuesta</h2>
+        <p class="lead" style="max-width:100%">Un <span class="tag">Digital Twin</span> web que une representación física, telemetría y persistencia.</p>
+        <div class="arch-row" data-id="arch">
+          <div class="arch-box" data-id="a1">
+            <div class="code">CAPA 01</div>
+            <p class="title">Campo / Patio AT</p>
+            <p class="desc">Torre · Transformador · Sensor</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="arch-box" data-id="a2">
+            <div class="code">CAPA 02</div>
+            <p class="title">Edge / Streaming</p>
+            <p class="desc">MQTT · Broker Kafka</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="arch-box" data-id="a3">
+            <div class="code">CAPA 03</div>
+            <p class="title">Persistencia</p>
+            <p class="desc">MongoDB histórico</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="arch-box" data-id="a4">
+            <div class="code">CAPA 04</div>
+            <p class="title">Supervisión</p>
+            <p class="desc">SCADA + App móvil</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Arquitectura animada (auto-animate morph) -->
+      <section data-transition="fade" data-auto-animate>
+        <h2>4. Arquitectura del sistema</h2>
+        <div class="arch-row" data-id="arch">
+          <div class="arch-box" data-id="a1" style="border-color:#ffe08a">
+            <div class="code" style="color:#ffe08a">SENSOR-TEMP-01</div>
+            <p class="title">Adquisición</p>
+            <p class="desc">Temp °C · Voltaje kV · Carga MW</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="arch-box" data-id="a2" style="border-color:#00e8ff">
+            <div class="code">BROKER-KAFKA</div>
+            <p class="title">Streaming</p>
+            <p class="desc">Cola · backpressure · msg/s</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="arch-box" data-id="a3" style="border-color:#3dff8a">
+            <div class="code" style="color:#3dff8a">DB-MONGODB</div>
+            <p class="title">Histórico NoSQL</p>
+            <p class="desc">Documentos · réplica</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="arch-box" data-id="a4">
+            <div class="code">UI / APP</div>
+            <p class="title">Decisión</p>
+            <p class="desc">Alarmas · Chart.js</p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:1.2em">AUTO-ANIMATE · las capas se morfolean entre diapositivas para reforzar el flujo lógico</p>
+      </section>
+
+      <!-- 6. Entorno 3D -->
+      <section data-transition="zoom" data-background-transition="zoom">
+        <h2>5. Entorno 3D fotorrealista industrial</h2>
+        <div class="grid-3">
+          <div class="card">
+            <strong>MOTOR</strong>
+            <p>Three.js r128 + OrbitControls: órbita, zoom y paneo libre sobre el patio AT.</p>
+          </div>
+          <div class="card">
+            <strong>MATERIALES PBR</strong>
+            <p>Metalness / Roughness en celosía, tanque, rack y silo. Aspecto metálico industrial.</p>
+          </div>
+          <div class="card">
+            <strong>ILUMINACIÓN</strong>
+            <p>Hemisferio + direccional con <code>shadowMap</code> PCF Soft y reflectores SpotLight.</p>
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:0.7em">
+          <div class="card">
+            <strong>SUELO OPERATIVO</strong>
+            <p>Plancha de concreto texturizado, grava circundante, malla perimetral y delimitaciones de seguridad amarillo/negro.</p>
+          </div>
+          <div class="card">
+            <strong>CONTEXTO MINERO</strong>
+            <p>Relieve rocoso de fondo, niebla atmosférica y atmósfera de faena de alta montaña.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Activos -->
+      <section data-transition="slide">
+        <h2>6. Activos modelados y etiquetados</h2>
+        <div class="grid-5">
+          <div class="card">
+            <strong>[TORRE-AT-01]</strong>
+            <p>Celosía AT de entrada con aisladores cerámicos en cadena.</p>
+          </div>
+          <div class="card">
+            <strong>[TRANS-01]</strong>
+            <p>Transformador principal, aletas térmicas y bushings HV/LV.</p>
+          </div>
+          <div class="card">
+            <strong>[SENSOR-TEMP-01]</strong>
+            <p>Nodo IoT RTD/PT100 sobre el tanque.</p>
+          </div>
+          <div class="card">
+            <strong>[BROKER-KAFKA]</strong>
+            <p>Rack industrial con LEDs de streaming.</p>
+          </div>
+          <div class="card">
+            <strong>[DB-MONGODB]</strong>
+            <p>Contenedor cilíndrico NoSQL histórico.</p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:1em">Cada elemento proyecta etiqueta HTML flotante sincronizada con la cámara 3D</p>
+      </section>
+
+      <!-- 8. Pipeline SVG animado -->
+      <section data-transition="concave">
+        <h2>7. Tubería de datos en tiempo real</h2>
+        <p>Partículas luminosas representan frames de telemetría viajando de campo a persistencia.</p>
+        <svg class="pipeline" viewBox="0 0 980 220" role="img" aria-label="Pipeline de telemetría animado">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#ffe08a" />
+              <stop offset="50%" stop-color="#00e8ff" />
+              <stop offset="100%" stop-color="#3dff8a" />
+            </linearGradient>
+          </defs>
+          <path class="wire power" d="M90,110 C180,40 250,180 340,110" />
+          <path class="wire data" d="M420,110 C520,30 600,190 700,110" />
+          <path class="wire persist" d="M780,110 C840,50 880,160 920,110" />
+
+          <circle class="packet" r="5">
+            <animateMotion dur="2.2s" repeatCount="indefinite" path="M90,110 C180,40 250,180 340,110" />
+          </circle>
+          <circle class="packet" r="5" fill="#00e8ff">
+            <animateMotion dur="1.6s" repeatCount="indefinite" path="M420,110 C520,30 600,190 700,110" />
+          </circle>
+          <circle class="packet" r="5" fill="#3dff8a">
+            <animateMotion dur="1.8s" repeatCount="indefinite" path="M780,110 C840,50 880,160 920,110" />
+          </circle>
+
+          <rect class="node" x="30" y="78" width="120" height="64" rx="4" />
+          <text class="node-label" x="90" y="105" text-anchor="middle">TORRE-AT</text>
+          <text class="node-label" x="90" y="122" text-anchor="middle" style="fill:#8a9aab;font-size:9px">POTENCIA</text>
+
+          <rect class="node" x="340" y="78" width="120" height="64" rx="4" />
+          <text class="node-label" x="400" y="105" text-anchor="middle">TRANS-01</text>
+          <text class="node-label" x="400" y="122" text-anchor="middle" style="fill:#8a9aab;font-size:9px">SENSOR IoT</text>
+
+          <rect class="node" x="700" y="78" width="120" height="64" rx="4" />
+          <text class="node-label" x="760" y="105" text-anchor="middle">KAFKA</text>
+          <text class="node-label" x="760" y="122" text-anchor="middle" style="fill:#8a9aab;font-size:9px">STREAMING</text>
+
+          <rect class="node" x="880" y="78" width="90" height="64" rx="4" style="stroke:#3dff8a" />
+          <text class="node-label" x="925" y="105" text-anchor="middle" style="fill:#3dff8a">MONGO</text>
+          <text class="node-label" x="925" y="122" text-anchor="middle" style="fill:#8a9aab;font-size:9px">NoSQL</text>
+        </svg>
+        <div class="grid-3" style="margin-top:0.3em">
+          <div class="card"><strong style="color:#ffe08a">POTENCIA AT</strong><p>Energía de torre a transformador</p></div>
+          <div class="card"><strong>TELEMETRÍA IoT</strong><p>Sensor → broker de mensajes</p></div>
+          <div class="card"><strong style="color:#3dff8a">PERSISTENCIA</strong><p>Kafka → MongoDB histórico</p></div>
+        </div>
+      </section>
+
+      <!-- 9. Modelo operativo / alarma -->
+      <section data-transition="fade" data-auto-animate>
+        <h2 data-id="alarm-title">8. Modelo operativo y umbral crítico</h2>
+        <div class="split">
+          <div>
+            <div class="grid-2">
+              <div class="card" data-id="kpi-temp">
+                <strong>TEMPERATURA</strong>
+                <div class="stat">≈ 56<span>°C</span></div>
+                <p>Modo nominal (&lt; 70 MW)</p>
+              </div>
+              <div class="card" data-id="kpi-load">
+                <strong>CARGA</strong>
+                <div class="stat">48<span>MW</span></div>
+                <p>Dentro de banda segura</p>
+              </div>
+            </div>
+            <p style="margin-top:0.8em;font-size:0.62em;color:#9eb0c0">
+              Relación simulada: al aumentar la carga, crecen temperatura de aceite/hot-spot y el lag de la cola Kafka; el voltaje AT desciende levemente.
+            </p>
+          </div>
+          <div class="card">
+            <strong>REGLA DE ALARMA</strong>
+            <p>Si <code>Carga &gt; 70 MW</code> o <code>Temp &gt; 70 °C</code>:</p>
+            <p style="margin-top:0.45em">• TRANS-01 → rojo intermitente<br />• Banner térmico SCADA<br />• Cola Kafka saturada<br />• Badge ALARM en app móvil</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10. Alarma morph -->
+      <section data-transition="fade" data-auto-animate>
+        <h2 data-id="alarm-title" style="color:#ff3355">8. Modo alarma térmica</h2>
+        <div class="split">
+          <div>
+            <div class="grid-2">
+              <div class="card alarm" data-id="kpi-temp">
+                <strong>TEMPERATURA</strong>
+                <div class="stat" style="color:#ff3355">≈ 80<span>°C</span></div>
+                <p>Sobre umbral térmico</p>
+              </div>
+              <div class="card alarm" data-id="kpi-load">
+                <strong>CARGA</strong>
+                <div class="stat" style="color:#ff3355">85<span>MW</span></div>
+                <p>Sobrecarga operativa</p>
+              </div>
+            </div>
+            <div class="alarm-strip">
+              ⚠ ALARMA TÉRMICA · TRANS-01 · SOBRECARGA &gt; 70 MW · COLA KAFKA SATURADA
+            </div>
+          </div>
+          <div class="card alarm">
+            <strong>EFECTO PEDAGÓGICO</strong>
+            <p>El estudiante observa causa → efecto: el slider de carga no es un control abstracto, sino un estímulo que altera color 3D, métricas, streaming y la app móvil de forma sincronizada.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11. App móvil + gráficos -->
+      <section data-transition="slide">
+        <h2>9. Supervisión móvil en tiempo real</h2>
+        <div class="split">
+          <div>
+            <p>Panel derecho tipo smartphone con Chart.js:</p>
+            <ul>
+              <li>Serie temporal de temperatura (°C)</li>
+              <li>Serie temporal de voltaje AT (kV)</li>
+              <li>KPIs locales y feed de eventos MQTT</li>
+              <li>Estado OK / ALARM coherente con el patio 3D</li>
+            </ul>
+            <div class="chart-fake" aria-hidden="true">
+              <svg viewBox="0 0 400 160" preserveAspectRatio="none">
+                <polyline fill="rgba(255,107,74,0.15)" stroke="#ff6b4a" stroke-width="2"
+                  points="0,120 40,110 80,115 120,90 160,95 200,70 240,78 280,50 320,58 360,40 400,48 400,160 0,160" />
+                <polyline fill="none" stroke="#00e8ff" stroke-width="2"
+                  points="0,90 40,88 80,92 120,86 160,89 200,84 240,87 280,80 320,83 360,78 400,81" />
+              </svg>
+            </div>
+          </div>
+          <div class="phone-mock">
+            <div class="notch"></div>
+            <small>MINERA ANDINA</small>
+            <span class="badge alarm">ALARM</span>
+            <h4>Monitor Subestación</h4>
+            <div class="grid-3" style="gap:0.25em;margin:0.4em 0">
+              <div class="card" style="padding:0.35em"><strong>Temp</strong><p>80.7°</p></div>
+              <div class="card" style="padding:0.35em"><strong>Volt</strong><p>134.7</p></div>
+              <div class="card" style="padding:0.35em"><strong>MW</strong><p>85</p></div>
+            </div>
+            <p style="font-family:var(--mono);font-size:0.32em;color:#8ad7c2;line-height:1.5">
+              [21:19:31] WARN queue_sat temp=80.7C<br />
+              [21:19:30] WARN queue_sat temp=81.0C
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. Resultados -->
+      <section data-transition="zoom">
+        <h2>10. Resultados y aportes</h2>
+        <div class="grid-2">
+          <div class="card">
+            <strong>APORTE TÉCNICO</strong>
+            <p>Integración coherente de gemelo 3D, simulación de carga, pipeline visual Big Data y UI SCADA/móvil en una sola experiencia web.</p>
+          </div>
+          <div class="card">
+            <strong>APORTE ACADÉMICO</strong>
+            <p>Material demostrativo para explicar IoT industrial, umbrales, streaming y persistencia NoSQL sin infraestructura física costosa.</p>
+          </div>
+          <div class="card">
+            <strong>USABILIDAD</strong>
+            <p>Navegación orbital intuitiva, etiquetas de ingeniería y feedback inmediato ante sobrecarga.</p>
+          </div>
+          <div class="card">
+            <strong>DESPLIEGUE</strong>
+            <p>Publicado en GitHub Pages: acceso desde cualquier navegador con internet.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 13. Conclusiones -->
+      <section data-transition="fade">
+        <h2>11. Conclusiones</h2>
+        <p class="quote">El gemelo digital no reemplaza la subestación: la hace inteligible.</p>
+        <ul>
+          <li>Se logró una representación industrial convincente con Three.js y materiales PBR.</li>
+          <li>La telemetría simulada conecta física virtual, streaming y almacenamiento histórico.</li>
+          <li>El umbral de 70 MW convierte variables abstractas en una narrativa operativa clara.</li>
+          <li>La app móvil cierra el ciclo: del patio AT a la decisión del operador.</li>
+        </ul>
+        <p class="muted" style="margin-top:1.2em">TRABAJO FUTURO · sensores reales · WebSockets · autenticación · histórico consultable</p>
+      </section>
+
+      <!-- 14. Cierre / demo -->
+      <section data-transition="zoom" data-background-transition="fade">
+        <div class="eyebrow">DEMO EN VIVO</div>
+        <h1>Explorar el gemelo digital</h1>
+        <p class="kicker">Subestación minera · telemetría · Kafka · MongoDB</p>
+        <p style="margin-top:1em">
+          <a class="cta" href="https://crisberjar.github.io/simulador/" target="_blank" rel="noopener">ABRIR SIMULACIÓN ↗</a>
+        </p>
+        <div class="meta-row">
+          <div>REPOSITORIO <b>github.com/CrisberJAR/simulador</b></div>
+          <div>PRESENTACIÓN <b>…/simulador/presentacion/</b></div>
+          <div>CONTROLES <b>Órbita · Zoom · Slider MW</b></div>
+        </div>
+        <div class="footer-note">Gracias · preguntas y discusión</div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: "c/t",
+      width: 1280,
+      height: 720,
+      margin: 0.06,
+      minScale: 0.35,
+      maxScale: 1.4,
+      transition: "slide",
+      backgroundTransition: "fade",
+      transitionSpeed: "default",
+      autoAnimateEasing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      autoAnimateDuration: 0.85,
+      autoAnimateUnmatched: true,
+      center: true,
+      controls: true,
+      progress: true,
+      keyboard: true,
+      overview: true,
+      touch: true,
+      fragments: true
+    });
+  </script>
+</body>
+</html>
