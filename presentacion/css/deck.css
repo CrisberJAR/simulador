@@ -1,13 +1,13 @@
 :root {
   --bg: #05080c;
-  --panel: rgba(8, 14, 22, 0.92);
+  --panel: rgba(8, 14, 22, 0.94);
   --cyan: #00e8ff;
   --green: #3dff8a;
   --red: #ff3355;
   --amber: #ffb020;
-  --text: #e6eef5;
-  --muted: #8a9aab;
-  --line: rgba(0, 232, 255, 0.28);
+  --text: #eef5fb;
+  --muted: #9aabbc;
+  --line: rgba(0, 232, 255, 0.32);
   --mono: "Share Tech Mono", ui-monospace, monospace;
   --sans: "Rajdhani", "Segoe UI", sans-serif;
   --serif: "Cormorant Garamond", Georgia, serif;
@@ -22,6 +22,7 @@ html, body {
   font-family: var(--sans);
   font-weight: 500;
   color: var(--text);
+  font-size: 38px;
 }
 
 .reveal .slides {
@@ -29,60 +30,68 @@ html, body {
 }
 
 .reveal .slides section {
-  padding: 0 4%;
+  padding: 0 3.2%;
+  height: 100%;
 }
 
 .reveal h1, .reveal h2, .reveal h3 {
   font-family: var(--sans);
   font-weight: 700;
   text-transform: none;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   color: var(--text);
   text-shadow: none;
 }
 
 .reveal h1 {
-  font-size: 2.35em;
-  line-height: 1.05;
-  margin-bottom: 0.35em;
+  font-size: 1.85em;
+  line-height: 1.08;
+  margin-bottom: 0.28em;
 }
 
 .reveal h2 {
-  font-size: 1.55em;
+  font-size: 1.28em;
   color: var(--cyan);
   border-bottom: 1px solid var(--line);
-  padding-bottom: 0.28em;
-  margin-bottom: 0.7em;
+  padding-bottom: 0.22em;
+  margin-bottom: 0.55em;
 }
 
 .reveal h3 {
-  font-size: 1.05em;
+  font-size: 0.95em;
   color: var(--green);
-  margin: 0.4em 0 0.35em;
+  margin: 0.35em 0 0.3em;
 }
 
 .reveal p, .reveal li {
-  font-size: 0.78em;
-  line-height: 1.45;
+  font-size: 0.72em;
+  line-height: 1.42;
   color: var(--text);
+}
+
+.reveal ul {
+  margin-left: 1em;
+}
+
+.reveal li {
+  margin-bottom: 0.28em;
 }
 
 .reveal .muted {
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 0.55em;
-  letter-spacing: 0.12em;
+  font-size: 0.48em;
+  letter-spacing: 0.1em;
 }
 
 .reveal .lead {
-  font-size: 0.95em;
-  color: #c6d5e2;
-  max-width: 18em;
+  font-size: 0.82em;
+  color: #d0dce8;
+  max-width: 34em;
+  margin-bottom: 0.55em;
 }
 
-.reveal a {
-  color: var(--cyan);
-}
+.reveal a { color: var(--cyan); }
 
 .reveal code, .reveal .tag {
   font-family: var(--mono);
@@ -91,30 +100,27 @@ html, body {
 
 .reveal .progress {
   color: var(--cyan);
-  height: 3px;
+  height: 4px;
 }
 
-.reveal .controls {
-  color: var(--cyan);
-}
+.reveal .controls { color: var(--cyan); }
 
 .reveal .slide-number {
   font-family: var(--mono);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--muted);
   background: transparent;
-  right: 14px;
-  bottom: 12px;
+  right: 16px;
+  bottom: 14px;
 }
 
-/* Ambient industrial backdrop */
 .deck-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(0, 232, 255, 0.08), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(0, 232, 255, 0.09), transparent 55%),
     radial-gradient(ellipse 60% 45% at 85% 75%, rgba(61, 255, 138, 0.05), transparent 50%),
     linear-gradient(180deg, #05080c 0%, #0a121c 55%, #05080c 100%);
 }
@@ -124,8 +130,8 @@ html, body {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 232, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 232, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(0, 232, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 232, 255, 0.045) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black, transparent);
   animation: gridDrift 28s linear infinite;
@@ -152,29 +158,26 @@ html, body {
   50% { transform: translateY(180px); opacity: 0.65; }
 }
 
-.reveal .slides {
-  z-index: 1;
-}
+.reveal .slides { z-index: 1; }
 
-/* Academic chrome */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.55em;
   font-family: var(--mono);
-  font-size: 0.42em;
-  letter-spacing: 0.18em;
+  font-size: 0.38em;
+  letter-spacing: 0.16em;
   color: var(--cyan);
   border: 1px solid var(--line);
-  padding: 0.35em 0.7em;
-  margin-bottom: 1em;
+  padding: 0.4em 0.75em;
+  margin-bottom: 0.75em;
   background: rgba(0, 232, 255, 0.05);
 }
 
 .eyebrow::before {
   content: "";
-  width: 0.45em;
-  height: 0.45em;
+  width: 0.5em;
+  height: 0.5em;
   border-radius: 50%;
   background: var(--green);
   box-shadow: 0 0 10px var(--green);
@@ -189,20 +192,21 @@ html, body {
 .kicker {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 1.05em;
-  color: #b7c7d6;
+  font-size: 0.92em;
+  color: #c5d3e0;
   font-weight: 500;
   letter-spacing: 0.01em;
+  max-width: 22em;
 }
 
 .meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.2em;
-  margin-top: 1.6em;
+  gap: 1em 1.4em;
+  margin-top: 1.1em;
   font-family: var(--mono);
-  font-size: 0.42em;
-  letter-spacing: 0.08em;
+  font-size: 0.38em;
+  letter-spacing: 0.07em;
   color: var(--muted);
 }
 
@@ -211,17 +215,50 @@ html, body {
   font-weight: 500;
 }
 
-/* Cards / grids */
+.team-block {
+  margin-top: 1em;
+  padding: 0.7em 0.85em;
+  border: 1px solid var(--line);
+  background: rgba(0, 232, 255, 0.04);
+}
+
+.team-block .label {
+  font-family: var(--mono);
+  font-size: 0.38em;
+  letter-spacing: 0.16em;
+  color: var(--cyan);
+  margin-bottom: 0.45em;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.28em 1.1em;
+}
+
+.team-grid span {
+  font-size: 0.52em;
+  color: #e8f0f7;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+.team-grid span::before {
+  content: "▸ ";
+  color: var(--cyan);
+  font-family: var(--mono);
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.85em;
+  gap: 0.75em;
 }
 
 .grid-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.7em;
+  gap: 0.65em;
 }
 
 .grid-5 {
@@ -233,7 +270,7 @@ html, body {
 .card {
   background: var(--panel);
   border: 1px solid var(--line);
-  padding: 0.75em 0.85em;
+  padding: 0.7em 0.8em;
   position: relative;
   backdrop-filter: blur(8px);
 }
@@ -250,8 +287,8 @@ html, body {
 .card strong {
   display: block;
   font-family: var(--mono);
-  font-size: 0.55em;
-  letter-spacing: 0.12em;
+  font-size: 0.48em;
+  letter-spacing: 0.1em;
   color: var(--cyan);
   margin-bottom: 0.35em;
 }
@@ -259,7 +296,8 @@ html, body {
 .card p {
   margin: 0;
   font-size: 0.58em;
-  color: #c5d3df;
+  color: #d4e0ea;
+  line-height: 1.4;
 }
 
 .card.alarm {
@@ -271,7 +309,7 @@ html, body {
 
 .stat {
   font-family: var(--mono);
-  font-size: 1.35em;
+  font-size: 1.25em;
   color: var(--green);
   line-height: 1;
 }
@@ -282,11 +320,10 @@ html, body {
   margin-left: 0.25em;
 }
 
-/* Pipeline SVG */
 .pipeline {
   width: 100%;
   height: auto;
-  margin-top: 0.4em;
+  margin: 0.25em 0 0.4em;
   overflow: visible;
 }
 
@@ -299,29 +336,21 @@ html, body {
 .pipeline .node-label {
   fill: var(--cyan);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.06em;
 }
 
 .pipeline .wire {
   fill: none;
   stroke: rgba(0, 232, 255, 0.35);
-  stroke-width: 2;
+  stroke-width: 2.5;
   stroke-dasharray: 6 8;
   animation: dash 1.2s linear infinite;
 }
 
-.pipeline .wire.power {
-  stroke: rgba(255, 224, 138, 0.55);
-}
-
-.pipeline .wire.data {
-  stroke: rgba(0, 232, 255, 0.65);
-}
-
-.pipeline .wire.persist {
-  stroke: rgba(61, 255, 138, 0.65);
-}
+.pipeline .wire.power { stroke: rgba(255, 224, 138, 0.55); }
+.pipeline .wire.data { stroke: rgba(0, 232, 255, 0.65); }
+.pipeline .wire.persist { stroke: rgba(61, 255, 138, 0.65); }
 
 .pipeline .packet {
   fill: var(--cyan);
@@ -332,62 +361,62 @@ html, body {
   to { stroke-dashoffset: -28; }
 }
 
-/* Architecture morph blocks */
 .arch-row {
   display: flex;
   align-items: stretch;
-  gap: 0.55em;
-  margin-top: 0.6em;
+  gap: 0.45em;
+  margin-top: 0.45em;
 }
 
 .arch-box {
   flex: 1;
-  min-height: 4.2em;
+  min-height: 5em;
   background: rgba(0, 232, 255, 0.04);
   border: 1px solid var(--line);
-  padding: 0.65em 0.55em;
+  padding: 0.6em 0.5em;
   text-align: center;
 }
 
 .arch-box .code {
   font-family: var(--mono);
-  font-size: 0.42em;
-  letter-spacing: 0.1em;
+  font-size: 0.4em;
+  letter-spacing: 0.08em;
   color: var(--cyan);
-  margin-bottom: 0.35em;
+  margin-bottom: 0.3em;
 }
 
 .arch-box .title {
   font-size: 0.62em;
   margin: 0;
+  font-weight: 700;
 }
 
 .arch-box .desc {
-  font-size: 0.45em;
+  font-size: 0.48em;
   color: var(--muted);
   margin-top: 0.35em;
+  line-height: 1.35;
 }
 
 .arrow {
   align-self: center;
   color: var(--cyan);
   font-family: var(--mono);
-  font-size: 0.7em;
-  opacity: 0.7;
+  font-size: 0.75em;
+  opacity: 0.75;
 }
 
-/* Alarm demo visual */
 .alarm-strip {
   display: flex;
   align-items: center;
-  gap: 0.8em;
-  margin-top: 0.8em;
-  padding: 0.55em 0.8em;
+  gap: 0.7em;
+  margin-top: 0.7em;
+  padding: 0.55em 0.75em;
   border: 1px solid var(--red);
   background: rgba(80, 8, 18, 0.55);
   font-family: var(--mono);
-  font-size: 0.48em;
-  letter-spacing: 0.08em;
+  font-size: 0.46em;
+  letter-spacing: 0.06em;
   color: #ffd0d6;
   animation: blink 0.7s steps(2, end) infinite;
 }
@@ -398,7 +427,7 @@ html, body {
 }
 
 .chart-fake {
-  height: 7.5em;
+  height: 7.2em;
   margin-top: 0.4em;
   border: 1px solid var(--line);
   background:
@@ -421,12 +450,12 @@ html, body {
 }
 
 .phone-mock {
-  width: 9.2em;
+  width: 10em;
   margin: 0 auto;
   border: 0.35em solid #1b222c;
   border-radius: 1.1em;
   background: #0b1016;
-  padding: 0.55em 0.45em 0.7em;
+  padding: 0.55em 0.5em 0.75em;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
 }
 
@@ -441,10 +470,10 @@ html, body {
 .phone-mock .badge {
   float: right;
   font-family: var(--mono);
-  font-size: 0.38em;
+  font-size: 0.4em;
   border: 1px solid var(--green);
   color: var(--green);
-  padding: 0.15em 0.35em;
+  padding: 0.18em 0.4em;
 }
 
 .phone-mock .badge.alarm {
@@ -454,39 +483,39 @@ html, body {
 }
 
 .phone-mock h4 {
-  font-size: 0.55em;
+  font-size: 0.58em;
   margin: 0 0 0.35em;
   color: var(--text);
 }
 
 .phone-mock small {
   font-family: var(--mono);
-  font-size: 0.32em;
+  font-size: 0.34em;
   color: var(--cyan);
   letter-spacing: 0.12em;
 }
 
 .split {
   display: grid;
-  grid-template-columns: 1.25fr 0.9fr;
-  gap: 1.1em;
-  align-items: center;
+  grid-template-columns: 1.2fr 0.95fr;
+  gap: 1em;
+  align-items: start;
 }
 
 .footer-note {
   position: absolute;
-  left: 4%;
-  bottom: 1.2em;
+  left: 3.2%;
+  bottom: 1em;
   font-family: var(--mono);
-  font-size: 0.35em;
+  font-size: 0.34em;
   color: var(--muted);
   letter-spacing: 0.08em;
 }
 
 .cta {
   display: inline-block;
-  margin-top: 1em;
-  padding: 0.45em 0.9em;
+  margin-top: 0.85em;
+  padding: 0.5em 1em;
   border: 1px solid var(--cyan);
   color: var(--cyan) !important;
   text-decoration: none !important;
@@ -494,38 +523,33 @@ html, body {
   font-size: 0.55em;
   letter-spacing: 0.1em;
   background: rgba(0, 232, 255, 0.06);
-  transition: background 0.25s, box-shadow 0.25s;
 }
 
-.cta:hover {
-  background: rgba(0, 232, 255, 0.14);
-  box-shadow: 0 0 20px rgba(0, 232, 255, 0.25);
-}
-
-.objectives li {
-  margin-bottom: 0.35em;
-}
-
-.objectives li::marker {
-  color: var(--cyan);
-}
+.objectives li::marker { color: var(--cyan); }
 
 .two-col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2em;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 1em;
   align-items: start;
 }
 
 .quote {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 1.15em;
-  color: #d5e2ec;
+  font-size: 0.95em;
+  color: #dce6ef;
   border-left: 3px solid var(--cyan);
-  padding-left: 0.7em;
-  margin: 0.8em 0;
-  max-width: 16em;
+  padding-left: 0.65em;
+  margin: 0.2em 0 0.7em;
+  line-height: 1.3;
+}
+
+.body-text {
+  font-size: 0.66em !important;
+  line-height: 1.45 !important;
+  color: #d5e1ec !important;
+  margin-bottom: 0.55em;
 }
 
 .nav-hint {
@@ -534,17 +558,24 @@ html, body {
   bottom: 42px;
   z-index: 30;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   letter-spacing: 0.08em;
   opacity: 0.75;
 }
 
-@media (max-width: 900px) {
-  .grid-2, .grid-3, .grid-5, .split, .two-col, .arch-row {
+.cover-layout {
+  display: grid;
+  grid-template-columns: 1.35fr 0.9fr;
+  gap: 1.1em;
+  align-items: end;
+}
+
+@media (max-width: 980px) {
+  .grid-2, .grid-3, .grid-5, .split, .two-col, .arch-row, .cover-layout, .team-grid {
     grid-template-columns: 1fr;
     flex-direction: column;
   }
   .arrow { display: none; }
-  .reveal h1 { font-size: 1.7em; }
+  .reveal { font-size: 28px; }
 }
