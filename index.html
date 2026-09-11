@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEMELO DIGITAL · Subestación Eléctrica Minera AT-01</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/scada.css?v=5" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="viewport"></canvas>
+    <div id="labels"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">◈</span>
+        <div>
+          <h1>GEMELO DIGITAL INDUSTRIAL</h1>
+          <p>Subestación Minera 138 / 13.8 kV · Patio AT-01 · Streaming MQTT / Kafka → MongoDB</p>
+        </div>
+      </div>
+      <div class="topbar-meta">
+        <div class="chip" id="clockChip">--:--:--</div>
+        <div class="chip chip-live"><span class="pulse-dot"></span> TELEMETRÍA EN VIVO</div>
+        <div class="chip" id="modeChip">MODO NOMINAL</div>
+      </div>
+    </header>
+
+    <div class="alert-banner" id="alertBanner" hidden>
+      <span class="alert-ico">⚠</span>
+      <strong>ALARMA TÉRMICA · TRANS-01</strong>
+      <span id="alertText">Sobrecarga &gt; 70 MW · Temperatura sobre umbral · Cola Kafka saturada</span>
+    </div>
+
+    <aside class="panel panel-left" id="iotPanel">
+      <div class="panel-frame"></div>
+      <header class="panel-head">
+        <span>SCADA / IOT EDGE</span>
+        <small>Nodo de control local</small>
+      </header>
+
+      <section class="block">
+        <label class="slider-label" for="loadSlider">
+          Carga Subestación (MW)
+          <b id="loadValue">48.0</b>
+        </label>
+        <input id="loadSlider" type="range" min="10" max="100" step="0.1" value="48" />
+        <div class="slider-scale"><span>10</span><span>70 MW UMBRAL</span><span>100</span></div>
+      </section>
+
+      <section class="kpi-grid">
+        <article class="kpi">
+          <span>TEMPERATURA</span>
+          <strong id="kpiTemp">56.4<span>°C</span></strong>
+        </article>
+        <article class="kpi">
+          <span>VOLTAJE AT</span>
+          <strong id="kpiVolt">136.3<span>kV</span></strong>
+        </article>
+        <article class="kpi">
+          <span>OIL / HOT-SPOT</span>
+          <strong id="kpiOil">61.2<span>°C</span></strong>
+        </article>
+        <article class="kpi">
+          <span>POTENCIA</span>
+          <strong id="kpiPower">48.0<span>MW</span></strong>
+        </article>
+      </section>
+
+      <section class="block">
+        <div class="block-title">BROKER-KAFKA · Cola de streaming</div>
+        <div class="meter">
+          <div class="meter-fill" id="kafkaFill"></div>
+        </div>
+        <div class="meter-meta">
+          <span id="kafkaStatus">Cola estable · 19%</span>
+          <span id="kafkaRate">1.2k msg/s</span>
+        </div>
+      </section>
+
+      <section class="block">
+        <div class="block-title">DB-MONGODB · Histórico NoSQL</div>
+        <div class="mongo-row">
+          <div><small>OPS ESCRITURA</small><b id="mongoOps">840/s</b></div>
+          <div><small>DOCUMENTOS</small><b id="mongoDocs">128450</b></div>
+          <div><small>RÉPLICA</small><b id="mongoReplica">PRIMARY</b></div>
+        </div>
+      </section>
+
+      <section class="block payload">
+        <div class="block-title">ÚLTIMO FRAME MQTT → KAFKA</div>
+        <pre id="payloadBox">{ }</pre>
+      </section>
+    </aside>
+
+    <aside class="panel panel-right">
+      <div class="phone">
+        <div class="phone-bezel">
+          <div class="phone-notch"></div>
+          <div class="phone-status">
+            <span id="phoneTime">21:51</span>
+            <span>5G · 87%</span>
+          </div>
+          <div class="phone-app">
+            <header class="app-head">
+              <div>
+                <p>MINERA ANDINA</p>
+                <h2>Monitor Subestación</h2>
+              </div>
+              <span class="app-badge" id="appBadge">OK</span>
+            </header>
+            <div class="app-alert" id="appAlert" hidden>TRANS-01 en sobrecarga térmica</div>
+            <div class="app-kpis">
+              <div><small>Temp</small><b id="appTemp">56.4°</b></div>
+              <div><small>Voltaje</small><b id="appVolt">136.3 kV</b></div>
+              <div><small>Carga</small><b id="appLoad">48 MW</b></div>
+            </div>
+            <div class="chart-card">
+              <h3>Temperatura (°C)</h3>
+              <div class="chart-wrap"><canvas id="chartTemp"></canvas></div>
+            </div>
+            <div class="chart-card">
+              <h3>Voltaje (kV)</h3>
+              <div class="chart-wrap"><canvas id="chartVolt"></canvas></div>
+            </div>
+            <div class="app-feed" id="appFeed"></div>
+          </div>
+          <div class="phone-home"></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="legend">
+      <span><i class="dot power"></i> Potencia AT</span>
+      <span><i class="dot telemetry"></i> Telemetría IoT</span>
+      <span><i class="dot persist"></i> Persistencia NoSQL</span>
+      <span>Órbita · Zoom · Paneo</span>
+    </div>
+
+    <footer class="statusbar">
+      <span>SITE: FAJA-NORTE / 4.200 m s.n.m.</span>
+      <span id="fpsLabel">60 FPS</span>
+      <span id="packetLabel">PKT 000000</span>
+      <span>SHADOWMAP PCF · PBR METAL/ROUGH</span>
+    </footer>
+
+    <div id="loader">
+      <div class="loader-inner">
+        <div class="loader-ring"></div>
+        <p>INICIALIZANDO GEMELO DIGITAL</p>
+        <small>Cargando escena industrial · Three.js</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Three r128 + OrbitControls (global THREE) y Chart.js UMD — CDNs estables -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/vendor/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="js/digital-twin.js?v=5"></script>
+</body>
+</html>

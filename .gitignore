@@ -1,0 +1,13 @@
+# Dependencias / entorno
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+.vscode/
+.idea/
+
+# Caché local
+__pycache__/
+*.pyc
